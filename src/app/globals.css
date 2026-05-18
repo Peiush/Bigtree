@@ -198,9 +198,8 @@ body {
 
 /* ── Experience preview grid ───────────────────────────────────────── */
 .exp-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-@media (max-width: 900px)  { .exp-cards-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px)  { .exp-cards-grid { grid-template-columns: 1fr; } }
-@media (max-width: 560px)  { .exp-cards-grid .exp-card { aspect-ratio: 16/9 !important; } }
+@media (max-width: 900px)  { .exp-cards-grid { grid-template-columns: 1fr 1fr; gap: 16px; } }
+@media (max-width: 560px)  { .exp-cards-grid { grid-template-columns: 1fr; gap: 16px; } }
 
 /* ── Events strip header — stack on small screens ─────────────────── */
 .ev-header-row { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; }

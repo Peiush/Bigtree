@@ -81,18 +81,20 @@ export default function ExperiencePreview() {
               }} className="group-hover:scale-105" />
               <div style={{
                 position: 'absolute', inset: 0,
-                background: 'linear-gradient(to top, rgba(10,13,8,0.9) 0%, rgba(10,13,8,0.05) 55%)',
+                background: 'linear-gradient(to top, rgba(5,7,4,0.96) 0%, rgba(5,7,4,0.65) 40%, rgba(5,7,4,0.1) 70%, transparent 100%)',
               }} />
               <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '28px 24px' }}>
                 <p style={{
                   fontSize: '10px', fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase',
                   color: 'var(--color-gold)', fontFamily: 'DM Mono, monospace', marginBottom: '8px',
+                  textShadow: '0 1px 6px rgba(0,0,0,0.8)',
                 }}>Discover</p>
                 <h3 style={{
                   fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic',
                   fontSize: '28px', color: 'var(--color-gold-cream)', marginBottom: '6px', fontWeight: 400,
+                  textShadow: '0 2px 8px rgba(0,0,0,0.8)',
                 }}>{c.label}</h3>
-                <p style={{ fontSize: '13px', color: 'rgba(232,228,216,0.65)', fontWeight: 300 }}>{c.desc}</p>
+                <p style={{ fontSize: '13px', color: 'rgba(232,228,216,0.9)', fontWeight: 400, textShadow: '0 1px 4px rgba(0,0,0,0.7)' }}>{c.desc}</p>
               </div>
             </Link>
           ))}
