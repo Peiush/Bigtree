@@ -408,7 +408,7 @@ export default function EventsPageClient() {
         {/* ── Tab Nav ───────────────────────────────────────────── */}
         <div style={{ borderBottom: '1px solid rgba(200,145,58,0.12)', position: 'sticky', top: '64px', background: 'var(--color-bg)', zIndex: 20 }}>
           <div className="content-wrap">
-            <div style={{ display: 'flex', gap: '0', overflowX: 'auto' }}>
+            <div className="events-tabs-scroll" style={{ display: 'flex', gap: '0', overflowX: 'auto', scrollbarWidth: 'none' }}>
               {tabs.map((t) => (
                 <button
                   key={t.id}

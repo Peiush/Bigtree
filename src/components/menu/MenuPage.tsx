@@ -197,15 +197,31 @@ export default function MenuPageClient() {
       </div>
 
       {/* ── Category tabs — sticky ── */}
-      <div style={{ position: 'sticky', top: '64px', zIndex: 30, overflowX: 'auto', background: 'var(--color-bg-card)', borderBottom: '1px solid rgba(200,145,58,0.12)' }}>
-        <div className="menu-tabs-pad" style={{ display: 'flex', alignItems: 'center', minWidth: 'max-content' }}>
-          {[{ id: 'all', label: 'All', icon: '🍴' }, ...categories].map((c) => (
-            <button key={c.id} onClick={() => setActiveCategory(c.id)}
-              className="menu-tab-btn"
-              style={{ padding: '16px 20px', fontSize: '13px', fontWeight: 500, whiteSpace: 'nowrap', border: 'none', background: 'transparent', cursor: 'pointer', borderBottom: `2px solid ${activeCategory === c.id ? 'var(--color-gold)' : 'transparent'}`, color: activeCategory === c.id ? 'var(--color-gold)' : 'var(--color-muted)', transition: 'all 0.2s' }}>
-              {c.icon} {c.label}
-            </button>
-          ))}
+      <div className="menu-tabs-scroll" style={{
+        position: 'sticky', top: '64px', zIndex: 30,
+        overflowX: 'auto', scrollbarWidth: 'none',
+        background: 'var(--color-bg-card)',
+        borderBottom: '1px solid rgba(200,145,58,0.12)',
+      }}>
+        <div className="menu-tabs-pad" style={{ display: 'flex', alignItems: 'flex-end', minWidth: 'max-content' }}>
+          {[{ id: 'all', label: 'All', icon: '🍴' }, ...categories].map((c) => {
+            const isActive = activeCategory === c.id;
+            return (
+              <button key={c.id} onClick={() => setActiveCategory(c.id)}
+                className="menu-tab-btn"
+                style={{
+                  padding: '14px 20px 12px',
+                  fontSize: '13px', fontWeight: 500, whiteSpace: 'nowrap',
+                  border: 'none', background: 'transparent', cursor: 'pointer',
+                  borderBottom: `2px solid ${isActive ? 'var(--color-gold)' : 'transparent'}`,
+                  marginBottom: '-1px',
+                  color: isActive ? 'var(--color-gold)' : 'var(--color-muted)',
+                  transition: 'color 0.2s, border-color 0.2s',
+                }}>
+                {c.icon} {c.label}
+              </button>
+            );
+          })}
         </div>
       </div>
 
