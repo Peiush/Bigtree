@@ -59,7 +59,7 @@ export default function MenuHighlights() {
 
   return (
     <>
-    <section ref={sectionRef} style={{ padding: '80px 0', background: 'var(--color-bg-card)' }}>
+    <section ref={sectionRef} className="home-sec-80" style={{ background: 'var(--color-bg-card)' }}>
       <div className="home-section-inner">
         <div className="mh-header">
           <p className="mh-label" style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--color-gold)', fontFamily: 'DM Mono, monospace', textAlign: 'center', marginBottom: '12px' }}>

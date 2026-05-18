@@ -24,7 +24,7 @@ function EventCard({ event }: { event: (typeof events)[0] }) {
 
   return (
     <Link href={`/events/${event.slug}`} className="event-card group" style={{
-      flexShrink: 0, width: '300px', height: '400px', borderRadius: '16px', overflow: 'hidden',
+      flexShrink: 0, width: 'min(300px, 78vw)', height: '400px', borderRadius: '16px', overflow: 'hidden',
       position: 'relative', display: 'block', cursor: 'pointer', textDecoration: 'none',
     }}>
       <img src={event.image} alt={event.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
@@ -87,9 +87,9 @@ export default function EventsStrip() {
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ padding: '80px 0', background: 'var(--color-bg)' }}>
+    <section ref={sectionRef} className="home-sec-80" style={{ background: 'var(--color-bg)' }}>
       <div className="home-section-inner">
-        <div className="ev-header" style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '40px' }}>
+        <div className="ev-header ev-header-row">
           <div>
             <p className="ev-label" style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--color-gold)', fontFamily: 'DM Mono, monospace', marginBottom: '12px' }}>Events</p>
             <h2 className="ev-heading" style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(26px, 3vw, 42px)', color: 'var(--color-gold-cream)', fontWeight: 400 }}>

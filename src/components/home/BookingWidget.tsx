@@ -35,7 +35,7 @@ export default function BookingWidget() {
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ background: 'var(--color-bg-card)', padding: '80px 0' }}>
+    <section ref={sectionRef} className="home-sec-80" style={{ background: 'var(--color-bg-card)' }}>
       <div className="home-section-inner" style={{ maxWidth: '960px' }}>
         <p className="bw-label" style={{
           fontSize: '10px', fontWeight: 600, letterSpacing: '2.5px', textTransform: 'uppercase',
@@ -49,12 +49,12 @@ export default function BookingWidget() {
           Reserve your table in under 2 minutes. Instant confirmation.
         </p>
 
-        <div className="bw-form" style={{
+        <div className="bw-form bw-form-pad" style={{
           background: 'var(--color-bg)', borderRadius: '20px',
           border: '1px solid rgba(200,145,58,0.15)', padding: '40px',
         }}>
           {/* Row 1: Date + Guests */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '32px' }}>
+          <div className="bw-date-guests-row">
             <div>
               <label style={{ display: 'block', fontSize: '10px', fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--color-gold)', fontFamily: 'DM Mono, monospace', marginBottom: '10px' }}>
                 📅 Select Date
@@ -92,7 +92,7 @@ export default function BookingWidget() {
             <label style={{ display: 'block', fontSize: '10px', fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--color-gold)', fontFamily: 'DM Mono, monospace', marginBottom: '16px' }}>
               📍 Seating Preference
             </label>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
+            <div className="bw-seat-type-grid">
               {seatTypes.map((s) => (
                 <button key={s.id} onClick={() => setSeat(s.id)} style={{
                   padding: '18px 16px', borderRadius: '12px', textAlign: 'left', cursor: 'pointer',

@@ -42,7 +42,7 @@ export default function SocialProofStrip() {
       }}>
         {stats.map((s, i) => (
           <div key={i} className="stat-item" style={{ display: 'flex', alignItems: 'center' }}>
-            <div style={{ padding: 'clamp(14px, 2vw, 18px) clamp(16px, 3vw, 32px)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', textAlign: 'center' }}>
+            <div style={{ padding: 'clamp(14px, 2vw, 18px) clamp(16px, 3vw, 32px)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', textAlign: 'center', width: '100%' }}>
               <span style={{ fontSize: '15px', fontWeight: 600, color: 'var(--color-gold)', fontFamily: 'DM Mono, monospace' }}>
                 {s.value}
               </span>
@@ -51,7 +51,7 @@ export default function SocialProofStrip() {
               </span>
             </div>
             {i < stats.length - 1 && (
-              <div style={{ width: '1px', height: '24px', background: 'rgba(200,145,58,0.2)', flexShrink: 0 }} />
+              <div className="stat-divider-v" style={{ width: '1px', height: '24px', background: 'rgba(200,145,58,0.2)', flexShrink: 0 }} />
             )}
           </div>
         ))}

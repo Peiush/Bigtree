@@ -54,7 +54,7 @@ export default function ExperiencePreview() {
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ padding: '80px 0', background: 'var(--color-bg)' }}>
+    <section ref={sectionRef} className="home-sec-80" style={{ background: 'var(--color-bg)' }}>
       <div className="home-section-inner">
         <div className="exp-header">
           <p className="exp-label" style={{

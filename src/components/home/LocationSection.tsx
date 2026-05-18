@@ -43,7 +43,7 @@ export default function LocationSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ padding: '80px 0', background: 'var(--color-bg-card)' }}>
+    <section ref={sectionRef} className="home-sec-80" style={{ background: 'var(--color-bg-card)' }}>
       <div className="home-section-inner">
         <div className="loc-header">
           <p className="loc-label" style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--color-gold)', fontFamily: 'DM Mono, monospace', textAlign: 'center', marginBottom: '12px' }}>
@@ -54,7 +54,7 @@ export default function LocationSection() {
           </h2>
         </div>
 
-        <div className="loc-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'start' }}>
+        <div className="loc-grid loc-content-grid">
           {/* Map */}
           <div className="loc-map" style={{ borderRadius: '16px', overflow: 'hidden', height: '400px' }}>
             <iframe

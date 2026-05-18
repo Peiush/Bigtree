@@ -38,7 +38,7 @@ export default function PrivateEventsCTA() {
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ position: 'relative', overflow: 'hidden', padding: '100px 0' }}>
+    <section ref={sectionRef} className="home-sec-100" style={{ position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0 }}>
         <img
           ref={imgRef}

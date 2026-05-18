@@ -45,7 +45,7 @@ export default function GalleryTeaser() {
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ padding: '80px 0', background: 'var(--color-bg)' }}>
+    <section ref={sectionRef} className="home-sec-80" style={{ background: 'var(--color-bg)' }}>
       <div className="home-section-inner">
         <div className="gt-header">
           <p className="gt-label" style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--color-gold)', fontFamily: 'DM Mono, monospace', textAlign: 'center', marginBottom: '12px' }}>Gallery</p>
@@ -58,7 +58,7 @@ export default function GalleryTeaser() {
         </div>
 
         {/* Asymmetric 5-photo grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.9fr 0.9fr', gridTemplateRows: '260px 260px', gap: '10px' }}>
+        <div className="gallery-teaser-grid">
           <div className="gallery-photo group" style={{ gridRow: '1 / 3', borderRadius: '14px', overflow: 'hidden', position: 'relative' }}>
             <img src={photos[0].src} alt={photos[0].alt} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} className="group-hover:scale-105" loading="lazy" />
             <div className="group-hover:opacity-100" style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.15)', opacity: 0, transition: 'opacity 0.3s', borderRadius: '14px' }} />

@@ -183,13 +183,14 @@ export default function Hero() {
         {/* Location tag */}
         <p
           style={{
-            fontSize: '12px',
-            letterSpacing: '4px',
+            fontSize: 'clamp(9px, 2.5vw, 12px)',
+            letterSpacing: 'clamp(2px, 1vw, 4px)',
             textTransform: 'uppercase',
-            marginBottom: '28px',
+            marginBottom: '20px',
             color: 'rgb(255, 183, 3)',
             fontFamily: 'DM Mono, monospace',
             textShadow: '0 1px 12px rgba(0,0,0,0.95), 0 0 28px rgba(0,0,0,0.7)',
+            padding: '0 8px',
           }}
         >
           Golf Course Road · Gurgaon · Est. 2020
@@ -243,11 +244,7 @@ export default function Hero() {
           Cabanas · Live Music · Open Air Dining
         </p> */}
 
-        <br></br>
-        <br></br>
-        <br></br>
-
-        <div style={{ display: 'flex', flexDirection: 'row', gap: '14px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '14px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center', marginTop: '8px' }}>
           <Link
             href="/reserve"
             style={{
