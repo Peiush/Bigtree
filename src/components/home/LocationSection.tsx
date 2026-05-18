@@ -20,20 +20,20 @@ export default function LocationSection() {
         .fromTo('.loc-label', { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' })
         .fromTo('.loc-heading', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: 'power2.out' }, '-=0.3');
 
-      // Map slides from left
+      // Map fades up
       gsap.fromTo('.loc-map',
-        { x: -60, opacity: 0 },
+        { y: 40, opacity: 0 },
         {
-          x: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+          y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
           scrollTrigger: { trigger: '.loc-grid', start: 'top 80%', once: true },
         }
       );
 
-      // Info items stagger from right
+      // Info items stagger up
       gsap.fromTo('.loc-info-item',
-        { x: 50, opacity: 0 },
+        { y: 30, opacity: 0 },
         {
-          x: 0, opacity: 1, duration: 0.65, ease: 'power3.out', stagger: 0.1,
+          y: 0, opacity: 1, duration: 0.65, ease: 'power3.out', stagger: 0.1,
           scrollTrigger: { trigger: '.loc-grid', start: 'top 80%', once: true },
           delay: 0.15,
         }
