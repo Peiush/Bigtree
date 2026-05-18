@@ -137,27 +137,28 @@ export default function Hero() {
 
   return (
     <section className="relative w-full overflow-hidden" style={{ height: '100svh', minHeight: '600px' }}>
-      {/* Background image — brighter outdoor dining scene */}
+      {/* Background — open-air cabana dining scene */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=85"
+          src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=1600&q=85"
           alt="The Big Tree Cafe outdoor dining"
           className="w-full h-full object-cover"
+          style={{ objectPosition: 'center 55%' }}
         />
-        {/* Base dark overlay */}
+        {/* Gradient: dark at top over the light image, eases mid, deeper at bottom */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(to bottom, rgba(6,8,5,0.55) 0%, rgba(6,8,5,0.42) 30%, rgba(6,8,5,0.65) 70%, rgba(6,8,5,0.96) 100%)',
+              'linear-gradient(to bottom, rgba(5,7,4,0.62) 0%, rgba(5,7,4,0.42) 35%, rgba(5,7,4,0.55) 65%, rgba(5,7,4,0.92) 100%)',
           }}
         />
-        {/* Radial scrim — darkens the center where text lives */}
+        {/* Warm amber bloom — richness without muddying the scene */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse 75% 60% at 50% 52%, rgba(4,6,3,0.45) 0%, transparent 100%)',
+              'radial-gradient(ellipse 70% 55% at 50% 48%, rgba(160,105,15,0.12) 0%, transparent 68%)',
           }}
         />
       </div>
@@ -169,84 +170,114 @@ export default function Hero() {
         style={{ mixBlendMode: 'screen' }}
       />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+      {/* Content — centred, max-width capped so headline never bleeds edge-to-edge */}
+      <div
+        className="relative z-10 flex flex-col h-full"
+        style={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          padding: '0 24px',
+        }}
+      >
+        {/* Location tag */}
         <p
-          className="text-xs tracking-[3px] uppercase mb-6"
           style={{
-            color: 'rgba(255, 251, 251, 0.85)',
+            fontSize: '12px',
+            letterSpacing: '4px',
+            textTransform: 'uppercase',
+            marginBottom: '28px',
+            color: 'rgb(255, 183, 3)',
             fontFamily: 'DM Mono, monospace',
-            textShadow: '0 1px 8px rgba(0,0,0,0.6)',
+            textShadow: '0 1px 12px rgba(0,0,0,0.95), 0 0 28px rgba(0,0,0,0.7)',
           }}
         >
           Golf Course Road · Gurgaon · Est. 2020
         </p>
 
+        {/* Headline — constrained so it never touches the viewport edges */}
         <h1
-          className="font-serif italic font-light leading-[1.1] mb-6"
+          className="font-serif italic font-light"
           style={{
-            fontSize: 'clamp(42px, 7vw, 96px)',
-            color: 'var(--color-gold-cream)',
-            textShadow: '0 2px 24px rgba(0,0,0,0.75), 0 1px 6px rgba(0,0,0,0.5)',
+            fontSize: 'clamp(40px, 6.5vw, 80px)',
+            lineHeight: 1.13,
+            marginBottom: '24px',
+            maxWidth: '820px',
+            width: '100%',
           }}
         >
-          Where nature meets<br />
-          <span style={{ color: 'var(--color-gold)', textShadow: '0 2px 24px rgba(0,0,0,0.8), 0 0 40px rgba(200,145,58,0.25)' }}>
+          <span style={{
+            display: 'block',
+            color: '#F0E6CC',
+            textShadow: '0 2px 16px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.5)',
+          }}>
+            Where nature meets
+          </span>
+          <span style={{
+            display: 'block',
+            color: '#D4A84E',
+            textShadow: '0 2px 20px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.8), 0 0 50px rgba(195,140,35,0.55)',
+          }}>
             good food.
           </span>
         </h1>
-        <br></br>
 
-        <p
-          className="text-sm md:text-base mb-12 max-w-md uppercase"
+        {/* Subtitle */}
+        {/* <p
           style={{
-            color: 'rgba(232,228,216,0.85)',
-            fontWeight: 300,
-            letterSpacing: '0.22em',
-            textShadow: '0 1px 10px rgba(0,0,0,0.7)',
+            fontSize: 'clamp(10px, 1.6vw, 13px)',
+            marginBottom: '40px',
+            color: 'rgba(255,248,230,1)',
+            fontWeight: 400,
+            letterSpacing: '0.25em',
+            textTransform: 'uppercase',
+            fontFamily: 'DM Mono, monospace',
+            background: 'rgba(5,7,4,0.38)',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
+            padding: '8px 24px',
+            borderRadius: '100px',
+            border: '1px solid rgba(200,160,60,0.25)',
           }}
         >
           Cabanas · Live Music · Open Air Dining
-        </p>
+        </p> */}
 
         <br></br>
+        <br></br>
+        <br></br>
 
-        <div className="flex flex-col sm:flex-row gap-4 w-full max-w-xs sm:max-w-none sm:w-auto">
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '14px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
           <Link
             href="/reserve"
-            className="inline-flex items-center justify-center rounded-full font-medium transition-all duration-200"
             style={{
-              background: 'var(--color-gold)',
-              color: '#0a0d08',
-              fontSize: '0.9rem',
-              letterSpacing: '0.04em',
-              padding: '14px 36px',
-              boxShadow: '0 4px 20px rgba(200,145,58,0.35)',
-              minWidth: '170px',
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              borderRadius: '100px', fontWeight: 500, transition: 'all 0.25s',
+              background: 'var(--color-gold)', color: '#0a0d08',
+              fontSize: '13px', letterSpacing: '0.06em', padding: '13px 32px',
+              boxShadow: '0 4px 20px rgba(200,145,58,0.4)',
+              textDecoration: 'none', whiteSpace: 'nowrap',
             }}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLElement).style.background = 'var(--color-gold-light)';
-              (e.currentTarget as HTMLElement).style.boxShadow = '0 6px 28px rgba(200,145,58,0.5)';
+              (e.currentTarget as HTMLElement).style.boxShadow = '0 6px 28px rgba(200,145,58,0.55)';
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLElement).style.background = 'var(--color-gold)';
-              (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 20px rgba(200,145,58,0.35)';
+              (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 20px rgba(200,145,58,0.4)';
             }}
           >
             Reserve a Table
           </Link>
           <Link
             href="/menu"
-            className="inline-flex items-center justify-center rounded-full font-medium transition-all duration-200"
             style={{
-              border: '1.5px solid var(--color-gold)',
-              color: 'var(--color-gold)',
-              background: 'rgba(10,13,8,0.35)',
-              fontSize: '0.9rem',
-              letterSpacing: '0.04em',
-              padding: '14px 36px',
-              backdropFilter: 'blur(6px)',
-              minWidth: '150px',
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              borderRadius: '100px', fontWeight: 500, transition: 'all 0.25s',
+              border: '1.5px solid var(--color-gold)', color: 'var(--color-gold)',
+              background: 'rgba(10,13,8,0.35)', fontSize: '13px',
+              letterSpacing: '0.06em', padding: '13px 32px',
+              backdropFilter: 'blur(6px)', textDecoration: 'none', whiteSpace: 'nowrap',
             }}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLElement).style.background = 'rgba(200,145,58,0.18)';

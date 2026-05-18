@@ -46,7 +46,7 @@ export default function GalleryTeaser() {
 
   return (
     <section ref={sectionRef} style={{ padding: '80px 0', background: 'var(--color-bg)' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 48px' }}>
+      <div className="home-section-inner">
         <div className="gt-header">
           <p className="gt-label" style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--color-gold)', fontFamily: 'DM Mono, monospace', textAlign: 'center', marginBottom: '12px' }}>Gallery</p>
           <h2 className="gt-heading" style={{ fontFamily: 'Cormorant Garamond, serif', textAlign: 'center', marginBottom: '8px', fontSize: 'clamp(26px, 3.5vw, 44px)', color: 'var(--color-gold-cream)', fontWeight: 400 }}>

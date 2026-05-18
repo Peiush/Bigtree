@@ -253,7 +253,7 @@ function CorporateSection() {
       opacity: 0, transform: 'translateY(24px)',
       transition: 'opacity 480ms ease, transform 480ms ease',
     }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
+      <div className="ev-hero-grid">
         <div>
           <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '20px' }}>
             Corporate
@@ -486,7 +486,7 @@ export default function EventsPageClient() {
                   Make the day unforgettable. Choose from three curated celebration packages, each designed to delight.
                 </p>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', paddingTop: '16px' }} className="ev-pkg-grid">
+              <div className="ev-pkg-grid" style={{ paddingTop: '16px' }}>
                 {birthdayPackages.map((p, i) => <PackageCard key={p.id} pkg={p} delay={i * 80} />)}
               </div>
             </div>

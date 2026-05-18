@@ -36,7 +36,7 @@ export default function BookingWidget() {
 
   return (
     <section ref={sectionRef} style={{ background: 'var(--color-bg-card)', padding: '80px 0' }}>
-      <div style={{ maxWidth: '960px', margin: '0 auto', padding: '0 48px' }}>
+      <div className="home-section-inner" style={{ maxWidth: '960px' }}>
         <p className="bw-label" style={{
           fontSize: '10px', fontWeight: 600, letterSpacing: '2.5px', textTransform: 'uppercase',
           color: 'var(--color-gold)', fontFamily: 'DM Mono, monospace', textAlign: 'center', marginBottom: '12px',

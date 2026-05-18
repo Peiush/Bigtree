@@ -5,19 +5,24 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { menuItems, categories, type MenuItem } from '@/lib/data/menu';
 import { ShoppingCart, Plus, Minus, X } from 'lucide-react';
+import DishModal from './DishModal';
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface CartItem { item: MenuItem; qty: number; }
 
-function MenuCard({ item, onAdd, onRemove, qty }: { item: MenuItem; onAdd: () => void; onRemove: () => void; qty: number }) {
+function MenuCard({ item, onAdd, onRemove, qty, onOpenDetail }: { item: MenuItem; onAdd: () => void; onRemove: () => void; qty: number; onOpenDetail: () => void }) {
   return (
     <div className="menu-card group" style={{
       borderRadius: '14px', overflow: 'hidden',
       background: 'var(--color-bg-card)', border: '1px solid rgba(200,145,58,0.1)',
       display: 'flex', flexDirection: 'column',
     }}>
-      <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
+      {/* Clickable image area */}
+      <div
+        onClick={onOpenDetail}
+        style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', cursor: 'pointer' }}
+      >
         <img src={item.image} alt={item.name} style={{
           width: '100%', height: '100%', objectFit: 'cover',
           transition: 'transform 0.4s ease', display: 'block',
@@ -31,9 +36,18 @@ function MenuCard({ item, onAdd, onRemove, qty }: { item: MenuItem; onAdd: () =>
         <div style={{ position: 'absolute', top: '10px', right: '10px', width: '18px', height: '18px', borderRadius: '3px', border: `2px solid ${item.isVeg ? 'var(--color-forest)' : 'var(--color-danger)'}`, background: 'rgba(10,13,8,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <div style={{ width: '9px', height: '9px', borderRadius: '50%', background: item.isVeg ? 'var(--color-forest)' : 'var(--color-danger)' }} />
         </div>
+        {/* "View details" hint on hover */}
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(5,8,4,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0, transition: 'opacity 0.25s' }}
+          className="menu-card-detail-hint">
+          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(245,230,194,0.9)', border: '1px solid rgba(245,230,194,0.3)', padding: '6px 14px', borderRadius: '100px' }}>View details</span>
+        </div>
       </div>
       <div style={{ padding: '16px 18px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-        <h3 style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-text)', marginBottom: '6px' }}>{item.name}</h3>
+        {/* Clickable name */}
+        <h3
+          onClick={onOpenDetail}
+          style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-text)', marginBottom: '6px', cursor: 'pointer' }}
+        >{item.name}</h3>
         <p style={{ fontSize: '12px', color: 'var(--color-muted)', fontWeight: 300, flex: 1, marginBottom: '14px', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' as const }}>{item.description}</p>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 600, fontSize: '22px', color: 'var(--color-gold)' }}>₹{item.price}</span>
@@ -61,6 +75,7 @@ export default function MenuPageClient() {
   const [filters, setFilters] = useState<string[]>([]);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [cartOpen, setCartOpen] = useState(false);
+  const [detailItem, setDetailItem] = useState<MenuItem | null>(null);
   const pageRef = useRef<HTMLDivElement>(null);
   const heroImgRef = useRef<HTMLImageElement>(null);
   const cardTriggersRef = useRef<ScrollTrigger[]>([]);
@@ -183,7 +198,7 @@ export default function MenuPageClient() {
 
       {/* ── Category tabs — sticky ── */}
       <div style={{ position: 'sticky', top: '64px', zIndex: 30, overflowX: 'auto', background: 'var(--color-bg-card)', borderBottom: '1px solid rgba(200,145,58,0.12)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', padding: '0 48px', minWidth: 'max-content' }}>
+        <div className="menu-tabs-pad" style={{ display: 'flex', alignItems: 'center', minWidth: 'max-content' }}>
           {[{ id: 'all', label: 'All', icon: '🍴' }, ...categories].map((c) => (
             <button key={c.id} onClick={() => setActiveCategory(c.id)}
               className="menu-tab-btn"
@@ -195,7 +210,7 @@ export default function MenuPageClient() {
       </div>
 
       {/* ── Filter pills ── */}
-      <div style={{ padding: '16px 48px', display: 'flex', gap: '10px', flexWrap: 'wrap', borderBottom: '1px solid rgba(200,145,58,0.08)' }}>
+      <div className="menu-filter-pad" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', borderBottom: '1px solid rgba(200,145,58,0.08)' }}>
         {filterOptions.map((f) => (
           <button key={f.id} onClick={() => toggleFilter(f.id)}
             className="menu-filter-pill"
@@ -206,7 +221,7 @@ export default function MenuPageClient() {
       </div>
 
       {/* ── Grid ── */}
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 48px 120px' }}>
+      <div className="menu-page-pad" style={{ maxWidth: '1280px', margin: '0 auto' }}>
         {filtered.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '80px 0' }}>
             <p style={{ fontSize: '48px', marginBottom: '16px' }}>🍃</p>
@@ -216,12 +231,13 @@ export default function MenuPageClient() {
             </button>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+          <div className="menu-grid">
             {filtered.map((item) => (
               <MenuCard key={item.id} item={item}
                 qty={getQty(item.id)}
                 onAdd={() => addToCart(item)}
-                onRemove={() => removeFromCart(item)} />
+                onRemove={() => removeFromCart(item)}
+                onOpenDetail={() => setDetailItem(item)} />
             ))}
           </div>
         )}
@@ -238,6 +254,17 @@ export default function MenuPageClient() {
             <span style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 600, fontSize: '20px' }}>₹{cartTotal} →</span>
           </button>
         </div>
+      )}
+
+      {/* ── Dish detail modal ── */}
+      {detailItem && (
+        <DishModal
+          item={detailItem}
+          qty={getQty(detailItem.id)}
+          onAdd={() => addToCart(detailItem)}
+          onRemove={() => removeFromCart(detailItem)}
+          onClose={() => setDetailItem(null)}
+        />
       )}
 
       {/* ── Cart drawer ── */}
@@ -278,6 +305,11 @@ export default function MenuPageClient() {
           </div>
         </div>
       )}
+
+      <style>{`
+        .menu-card:hover .menu-card-detail-hint { opacity: 1 !important; }
+        .menu-card h3:hover { color: var(--color-gold) !important; }
+      `}</style>
     </div>
   );
 }

@@ -447,7 +447,7 @@ export default function ReservationPageClient() {
         {step === 0 && (
           <>
             {card(
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px' }}>
+              <div className="res-2col">
                 {/* Left: Calendar */}
                 <div>
                   {sectionHead('Pick a date')}
@@ -507,7 +507,7 @@ export default function ReservationPageClient() {
             {card(
               <>
                 {sectionHead('Choose your seating', 'All three are gorgeous — pick the vibe you\'re after.')}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+                <div className="res-seat-grid">
                   {SEAT_TYPES.map(s => (
                     <button key={s.id} onClick={() => upd('seatType', s.id)}
                       style={{
@@ -567,7 +567,7 @@ export default function ReservationPageClient() {
 
                 {/* Lunch */}
                 <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'var(--color-muted)', letterSpacing: '1.5px', marginBottom: '10px' }}>LUNCH</p>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '28px' }}>
+                <div className="res-time-grid" style={{ marginBottom: '28px' }}>
                   {LUNCH_SLOTS.map(t => (
                     <TimeSlot key={t} time={t} selected={form.timeSlot === t} full={FULL_SLOTS.has(t)} onClick={() => !FULL_SLOTS.has(t) && upd('timeSlot', t)} />
                   ))}
@@ -575,7 +575,7 @@ export default function ReservationPageClient() {
 
                 {/* Evening */}
                 <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'var(--color-muted)', letterSpacing: '1.5px', marginBottom: '10px' }}>EVENING</p>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px' }}>
+                <div className="res-time-grid">
                   {EVENING_SLOTS.map(t => (
                     <TimeSlot key={t} time={t} selected={form.timeSlot === t} full={FULL_SLOTS.has(t)} onClick={() => !FULL_SLOTS.has(t) && upd('timeSlot', t)} />
                   ))}
@@ -590,7 +590,7 @@ export default function ReservationPageClient() {
         {step === 3 && (
           <>
             {card(
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '48px' }}>
+              <div className="res-outer-grid">
                 {/* Form */}
                 <div>
                   {sectionHead('A few details to lock it in')}

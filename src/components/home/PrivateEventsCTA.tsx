@@ -49,7 +49,7 @@ export default function PrivateEventsCTA() {
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,13,8,0.72)' }} />
       </div>
 
-      <div className="pe-content" style={{ position: 'relative', zIndex: 1, maxWidth: '720px', margin: '0 auto', padding: '0 48px', textAlign: 'center' }}>
+      <div className="pe-content pe-inner-pad" style={{ position: 'relative', zIndex: 1, maxWidth: '720px', margin: '0 auto', textAlign: 'center' }}>
         <p className="pe-label" style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--color-gold)', fontFamily: 'DM Mono, monospace', marginBottom: '16px' }}>
           Private Events
         </p>

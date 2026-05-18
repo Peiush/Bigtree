@@ -139,7 +139,16 @@ export default function GalleryPageClient() {
 
         {/* ── Hero ── */}
         <section className="gallery-hero">
-          <div className="content-wrap">
+          <div className="gallery-hero-bg">
+            <img
+              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=90"
+              alt=""
+              aria-hidden="true"
+              className="gallery-hero-img"
+            />
+            <div className="gallery-hero-overlay" />
+          </div>
+          <div className="content-wrap gallery-hero-content">
             <p className="gallery-eyebrow">The Gallery</p>
             <h1 className="gallery-title">
               The Big Tree —<br />
@@ -273,7 +282,46 @@ function GalleryStyles() {
   return (
     <style>{`
       /* Hero */
-      .gallery-hero { padding: 120px 0 56px; }
+      .gallery-hero {
+        position: relative;
+        min-height: 520px;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+      }
+      .gallery-hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+      .gallery-hero-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        animation: gallery-hero-zoom 12s ease-in-out infinite alternate;
+      }
+      @keyframes gallery-hero-zoom {
+        from { transform: scale(1); }
+        to   { transform: scale(1.06); }
+      }
+      .gallery-hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(5,8,4,0.35) 0%,
+          rgba(5,8,4,0.5)  50%,
+          rgba(5,8,4,0.82) 100%
+        );
+      }
+      .gallery-hero-content {
+        position: relative;
+        z-index: 1;
+        padding-top: 120px;
+        padding-bottom: 56px;
+        width: 100%;
+      }
       .gallery-eyebrow {
         font-family: 'DM Mono', monospace;
         font-size: 11px;

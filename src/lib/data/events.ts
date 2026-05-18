@@ -18,7 +18,7 @@ export const events: Event[] = [
     id: '1', slug: 'anuv-jain-tribute-may-15',
     title: 'Anuv Jain Tribute Night',
     type: 'live-music', date: '2026-05-15', time: '8:00 PM',
-    image: 'https://images.unsplash.com/photo-1540039155733-5bb30b99b771?w=700&q=85',
+    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=700&q=85',
     description: 'An acoustic homage to monsoon-soaked Bollywood ballads.',
     cabanaCount: 2, price: 1200, artist: 'Tribute Band', genre: 'Bollywood Acoustic',
   },

@@ -35,7 +35,7 @@ export default function ReviewsCarousel() {
 
   return (
     <section ref={sectionRef} style={{ padding: '80px 0', background: 'var(--color-bg-card)' }}>
-      <div className="rc-inner" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 48px', textAlign: 'center' }}>
+      <div className="rc-inner" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 clamp(20px, 5vw, 48px)', textAlign: 'center' }}>
         <p style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--color-gold)', fontFamily: 'DM Mono, monospace', marginBottom: '40px' }}>
           What They Say
         </p>

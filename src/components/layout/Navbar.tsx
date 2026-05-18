@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
+  { href: '/', label: 'Home' },
   { href: '/menu', label: 'Menu' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/events', label: 'Events' },
@@ -29,12 +30,12 @@ export default function Navbar() {
         transition: 'background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease',
         background: scrolled
           ? 'rgba(10,13,8,0.92)'
-          : 'linear-gradient(to bottom, rgba(6,8,5,0.72) 0%, rgba(6,8,5,0) 100%)',
+          : 'linear-gradient(to bottom, rgba(5,7,4,0.88) 0%, rgba(5,7,4,0.55) 60%, rgba(5,7,4,0) 100%)',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: scrolled ? '1px solid rgba(200,145,58,0.15)' : 'none',
       }}>
-        <div style={{
+        <div className="navbar-inner" style={{
           maxWidth: '1280px', margin: '0 auto', padding: '0 48px',
           height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'
         }}>
@@ -47,7 +48,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '36px' }}>
+          <nav className="desktop-nav">
             {navLinks.map((l) => (
               <Link key={l.href} href={l.href} style={{
                 fontSize: '13px',
@@ -55,7 +56,7 @@ export default function Navbar() {
                 textDecoration: 'none',
                 transition: 'color 0.2s',
                 fontWeight: 400,
-                textShadow: scrolled ? 'none' : '0 1px 6px rgba(0,0,0,0.7)',
+                textShadow: scrolled ? 'none' : '0 1px 10px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5)',
                 letterSpacing: '0.03em',
               }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-gold-light)')}
@@ -73,6 +74,11 @@ export default function Navbar() {
               Reserve
             </Link>
           </nav>
+
+          {/* Mobile hamburger */}
+          <button className="mobile-menu-btn" onClick={() => setMenuOpen(true)} aria-label="Open menu">
+            <Menu size={24} />
+          </button>
         </div>
       </header>
 

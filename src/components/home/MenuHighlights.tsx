@@ -1,16 +1,30 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { menuItems } from '@/lib/data/menu';
+import { menuItems, type MenuItem } from '@/lib/data/menu';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import DishModal from '@/components/menu/DishModal';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function MenuHighlights() {
   const bestsellers = menuItems.filter((i) => i.isBestseller).slice(0, 6);
   const sectionRef = useRef<HTMLElement>(null);
+  const [detailItem, setDetailItem] = useState<MenuItem | null>(null);
+  const [cart, setCart] = useState<{ id: string; qty: number }[]>([]);
+
+  const getQty = (id: string) => cart.find((c) => c.id === id)?.qty ?? 0;
+  const addToCart = (item: MenuItem) => setCart((prev) => {
+    const ex = prev.find((c) => c.id === item.id);
+    return ex ? prev.map((c) => c.id === item.id ? { ...c, qty: c.qty + 1 } : c) : [...prev, { id: item.id, qty: 1 }];
+  });
+  const removeFromCart = (item: MenuItem) => setCart((prev) => {
+    const ex = prev.find((c) => c.id === item.id);
+    if (!ex || ex.qty <= 1) return prev.filter((c) => c.id !== item.id);
+    return prev.map((c) => c.id === item.id ? { ...c, qty: c.qty - 1 } : c);
+  });
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -44,8 +58,9 @@ export default function MenuHighlights() {
   }, []);
 
   return (
+    <>
     <section ref={sectionRef} style={{ padding: '80px 0', background: 'var(--color-bg-card)' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 48px' }}>
+      <div className="home-section-inner">
         <div className="mh-header">
           <p className="mh-label" style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--color-gold)', fontFamily: 'DM Mono, monospace', textAlign: 'center', marginBottom: '12px' }}>
             The Menu
@@ -55,12 +70,13 @@ export default function MenuHighlights() {
           </h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+        <div className="menu-grid">
           {bestsellers.map((item) => (
             <div key={item.id} className="menu-card group" style={{
               borderRadius: '14px', overflow: 'hidden',
               background: 'var(--color-bg)', border: '1px solid rgba(200,145,58,0.1)',
-            }}>
+              cursor: 'pointer',
+            }} onClick={() => setDetailItem(item)}>
               <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
                 <img src={item.image} alt={item.name} style={{
                   width: '100%', height: '100%', objectFit: 'cover',
@@ -79,6 +95,10 @@ export default function MenuHighlights() {
                   background: 'rgba(10,13,8,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
                   <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: item.isVeg ? 'var(--color-forest)' : 'var(--color-danger)' }} />
+                </div>
+                {/* hover hint */}
+                <div style={{ position: 'absolute', inset: 0, background: 'rgba(5,8,4,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0, transition: 'opacity 0.25s' }} className="menu-card-detail-hint">
+                  <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(245,230,194,0.9)', border: '1px solid rgba(245,230,194,0.3)', padding: '6px 14px', borderRadius: '100px' }}>View details</span>
                 </div>
               </div>
               <div style={{ padding: '16px' }}>
@@ -107,5 +127,16 @@ export default function MenuHighlights() {
         </div>
       </div>
     </section>
+
+      {detailItem && (
+        <DishModal
+          item={detailItem}
+          qty={getQty(detailItem.id)}
+          onAdd={() => addToCart(detailItem)}
+          onRemove={() => removeFromCart(detailItem)}
+          onClose={() => setDetailItem(null)}
+        />
+      )}
+    </>
   );
 }

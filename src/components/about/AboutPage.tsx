@@ -307,8 +307,8 @@ export default function AboutPageClient() {
       </section>
 
       {/* ── Origin ──────────────────────────────────────────────────────── */}
-      <section className="origin-section" style={{ paddingTop: '96px', paddingBottom: '96px' }}>
-        <div className="content-wrap" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+      <section className="origin-section about-section-pad">
+        <div className="content-wrap about-origin-grid">
           <div>
             <p className="origin-label" style={{ fontSize: '11px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '20px', color: 'var(--color-gold)', fontFamily: 'var(--font-mono)' }}>The Origin</p>
             <h2 className="origin-h2 font-serif" style={{ fontSize: 'clamp(26px, 3.2vw, 50px)', color: 'var(--color-gold-cream)', lineHeight: 1.15, marginBottom: '32px' }}>
@@ -336,7 +336,7 @@ export default function AboutPageClient() {
       </section>
 
       {/* ── Values ──────────────────────────────────────────────────────── */}
-      <section className="values-section" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#121D0F' }}>
+      <section className="values-section about-section-pad" style={{ background: '#121D0F' }}>
         <div className="content-wrap">
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
             <p className="values-label" style={{ fontSize: '11px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '16px', color: 'var(--color-gold)', fontFamily: 'var(--font-mono)' }}>What We Believe</p>
@@ -345,7 +345,7 @@ export default function AboutPageClient() {
             </h2>
           </div>
 
-          <div className="values-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '48px' }}>
+          <div className="values-grid about-values-grid">
             {values.map((v) => (
               <div key={v.roman}>
                 <p className="val-roman font-serif" style={{ fontStyle: 'italic', fontSize: 'clamp(52px, 5.5vw, 76px)', color: 'var(--color-gold)', opacity: 0.22, lineHeight: 1, marginBottom: '20px' }}>{v.roman}</p>
@@ -358,7 +358,7 @@ export default function AboutPageClient() {
       </section>
 
       {/* ── Timeline ────────────────────────────────────────────────────── */}
-      <section className="timeline-section" style={{ paddingTop: '96px', paddingBottom: '96px' }}>
+      <section className="timeline-section about-section-pad">
         <div className="content-wrap">
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
             <p className="tl-label" style={{ fontSize: '11px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '16px', color: 'var(--color-gold)', fontFamily: 'var(--font-mono)' }}>How We Got Here</p>
@@ -387,7 +387,7 @@ export default function AboutPageClient() {
       </section>
 
       {/* ── Team ────────────────────────────────────────────────────────── */}
-      <section className="team-section" style={{ paddingTop: '96px', paddingBottom: '96px', background: 'var(--color-bg-card)' }}>
+      <section className="team-section about-section-pad" style={{ background: 'var(--color-bg-card)' }}>
         <div className="content-wrap">
           <div style={{ marginBottom: '48px' }}>
             <p className="team-label" style={{ fontSize: '11px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '16px', color: 'var(--color-gold)', fontFamily: 'var(--font-mono)' }}>The Team</p>
@@ -397,7 +397,7 @@ export default function AboutPageClient() {
             <p className="team-sub" style={{ fontSize: '14px', color: 'var(--color-muted)' }}>Plus thirty-eight more — servers, cooks, gardeners, valets — without whom there&apos;s no garden.</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '16px' }}>
+          <div className="about-team-grid">
             {team.map((member) => (
               <div key={member.name} className="team-card group" style={{ borderRadius: '16px', overflow: 'hidden', background: 'var(--color-bg)', border: '1px solid rgba(200,145,58,0.1)', cursor: 'pointer' }}>
                 <div style={{ aspectRatio: '3/4', overflow: 'hidden' }}>
@@ -417,8 +417,8 @@ export default function AboutPageClient() {
       </section>
 
       {/* ── Kitchen ─────────────────────────────────────────────────────── */}
-      <section className="kitchen-section" style={{ paddingTop: '96px', paddingBottom: '96px' }}>
-        <div className="content-wrap" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+      <section className="kitchen-section about-section-pad">
+        <div className="content-wrap about-kitchen-grid">
           <div className="kitchen-img" style={{ borderRadius: '16px', overflow: 'hidden', aspectRatio: '4/5' }}>
             <img
               src="https://images.unsplash.com/photo-1555244162-803834f70033?w=800&q=85"
@@ -451,7 +451,7 @@ export default function AboutPageClient() {
       </section>
 
       {/* ── CTA ─────────────────────────────────────────────────────────── */}
-      <section className="about-cta" style={{ paddingTop: '112px', paddingBottom: '112px', background: 'var(--color-bg-card)', textAlign: 'center' }}>
+      <section className="about-cta about-section-pad" style={{ background: 'var(--color-bg-card)', textAlign: 'center' }}>
         <div className="content-wrap" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <p className="cta-label" style={{ fontSize: '11px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '20px', color: 'var(--color-gold)', fontFamily: 'var(--font-mono)' }}>Come Visit</p>
           <h2 className="cta-h2 font-serif" style={{ fontSize: 'clamp(32px, 5vw, 72px)', color: 'var(--color-gold-cream)', marginBottom: '20px' }}>

@@ -55,7 +55,7 @@ export default function ExperiencePreview() {
 
   return (
     <section ref={sectionRef} style={{ padding: '80px 0', background: 'var(--color-bg)' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 48px' }}>
+      <div className="home-section-inner">
         <div className="exp-header">
           <p className="exp-label" style={{
             fontSize: '10px', fontWeight: 600, letterSpacing: '2.5px', textTransform: 'uppercase',
@@ -69,7 +69,7 @@ export default function ExperiencePreview() {
           </h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+        <div className="exp-cards-grid">
           {cards.map((c) => (
             <Link key={c.href} href={c.href} className="exp-card group" style={{
               position: 'relative', borderRadius: '16px', overflow: 'hidden',
