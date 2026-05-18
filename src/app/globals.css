@@ -149,7 +149,38 @@ body {
 @media (max-width: 560px) {
   .res-seat-grid  { grid-template-columns: 1fr; }
   .res-time-grid  { grid-template-columns: repeat(2, 1fr); }
-  .res-2col       { grid-template-columns: 1fr; }
+  .res-2col       { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* ── Reservation page shell & wrap ───────────────────────────────── */
+.res-page-shell { min-height: 100vh; padding-top: 80px; padding-bottom: 80px; }
+.res-page-wrap  { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+@media (max-width: 767px) {
+  .res-page-shell { padding-top: 64px; padding-bottom: 48px; }
+  .res-page-wrap  { padding: 0 16px; }
+}
+
+/* ── Reservation card inner padding ──────────────────────────────── */
+.res-card-inner { padding: 40px; }
+@media (max-width: 640px) {
+  .res-card-inner { padding: 24px 18px !important; }
+}
+
+/* ── Step bar — hide labels on very small screens ────────────────── */
+@media (max-width: 500px) {
+  .step-label-text { display: none !important; }
+  .step-connector  { margin: 0 6px !important; }
+}
+
+/* ── Confirmation booking details grid ───────────────────────────── */
+.res-confirm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+@media (max-width: 500px) {
+  .res-confirm-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* ── Seat type card image — shorter on mobile ─────────────────────── */
+@media (max-width: 560px) {
+  .res-seat-img { height: 120px !important; }
 }
 
 /* ── Home section padding responsive ──────────────────────────────── */

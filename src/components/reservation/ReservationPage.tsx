@@ -196,7 +196,7 @@ function MiniCalendar({ value, onChange }: { value: string; onChange: (d: string
 // ── Step Indicator ─────────────────────────────────────────────────────────────
 function StepBar({ step }: { step: number }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '36px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', marginBottom: 'clamp(20px, 4vw, 36px)' }}>
       {STEPS.map((label, i) => {
         const done = i < step;
         const active = i === step;
@@ -214,7 +214,7 @@ function StepBar({ step }: { step: number }) {
               }}>
                 {done ? <Check size={12} /> : i + 1}
               </div>
-              <span style={{
+              <span className="step-label-text" style={{
                 fontSize: '11px', fontFamily: 'DM Mono, monospace', letterSpacing: '0.8px',
                 color: active ? 'var(--color-text)' : done ? 'var(--color-muted)' : 'rgba(138,128,112,0.45)',
                 textTransform: 'uppercase', fontWeight: active ? '500' : '400',
@@ -222,7 +222,7 @@ function StepBar({ step }: { step: number }) {
               }}>{label}</span>
             </div>
             {i < STEPS.length - 1 && (
-              <div style={{
+              <div className="step-connector" style={{
                 flex: 1, height: '1px', margin: '0 14px',
                 background: i < step ? 'rgba(138,128,112,0.5)' : 'rgba(200,145,58,0.14)',
                 transition: 'background 0.25s',
@@ -341,7 +341,7 @@ export default function ReservationPageClient() {
   // ── Confirmed screen ─────────────────────────────────────────────────────────
   if (confirmed) {
     return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '100px 24px 60px' }}>
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 'clamp(80px, 12vw, 100px) clamp(16px, 5vw, 24px) 60px' }}>
         <div style={{ maxWidth: '640px', width: '100%', textAlign: 'center' }}>
 
           {/* Gold check circle */}
@@ -365,7 +365,7 @@ export default function ReservationPageClient() {
               <span style={{ fontSize: '10px', color: 'var(--color-muted)', fontFamily: 'DM Mono, monospace', letterSpacing: '1.5px', textTransform: 'uppercase' }}>Booking ID</span>
               <span style={{ fontSize: '14px', color: 'var(--color-gold)', fontFamily: 'DM Mono, monospace', letterSpacing: '1px' }}>{bookingId}</span>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '22px' }}>
+            <div className="res-confirm-grid">
               {[
                 { label: 'Date', value: formattedDate },
                 { label: 'Time', value: form.timeSlot },
@@ -406,11 +406,10 @@ export default function ReservationPageClient() {
 
   // ── Page shell ───────────────────────────────────────────────────────────────
   const card = (children: React.ReactNode, extraStyle?: React.CSSProperties) => (
-    <div style={{
+    <div className="res-card-inner" style={{
       background: 'var(--color-bg-card)',
       border: '1px solid rgba(200,145,58,0.12)',
       borderRadius: '20px',
-      padding: '40px',
       boxShadow: '0 12px 48px rgba(0,0,0,0.3)',
       ...extraStyle,
     }}>
@@ -426,11 +425,11 @@ export default function ReservationPageClient() {
   );
 
   return (
-    <div style={{ minHeight: '100vh', paddingTop: '80px', paddingBottom: '80px' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 40px' }}>
+    <div className="res-page-shell">
+      <div className="res-page-wrap">
 
         {/* ── Page header ── */}
-        <div style={{ paddingTop: '24px', marginBottom: '40px' }}>
+        <div style={{ paddingTop: 'clamp(12px, 3vw, 24px)', marginBottom: 'clamp(24px, 4vw, 40px)' }}>
           <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'var(--color-muted)', letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: '14px' }}>
             Reservation
           </p>
@@ -520,7 +519,7 @@ export default function ReservationPageClient() {
                       onMouseEnter={e => { if (form.seatType !== s.id) e.currentTarget.style.borderColor = 'rgba(200,145,58,0.38)'; }}
                       onMouseLeave={e => { if (form.seatType !== s.id) e.currentTarget.style.borderColor = 'rgba(200,145,58,0.15)'; }}>
                       {/* Image */}
-                      <div style={{ height: '156px', overflow: 'hidden', position: 'relative', background: 'var(--color-bg-hover)' }}>
+                      <div className="res-seat-img" style={{ height: '156px', overflow: 'hidden', position: 'relative', background: 'var(--color-bg-hover)' }}>
                         <img src={s.image} alt={s.label}
                           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: form.seatType === s.id ? 'brightness(1)' : 'brightness(0.75)', transition: 'filter 0.2s' }} />
                         {form.seatType === s.id && (
